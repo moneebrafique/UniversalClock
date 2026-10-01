@@ -30,7 +30,10 @@ val APP_THEMES = listOf(
     AppTheme("daylight", "Daylight", Color(0xFFF6F3EE), Color(0xFFE4E8EF), Color(0x66FFC680), Color(0x558EC5FC), light = true),
 )
 
-fun themeById(id: String?): AppTheme = APP_THEMES.firstOrNull { it.id == id } ?: APP_THEMES.first()
+const val DEFAULT_THEME_ID = "daylight"
+
+fun themeById(id: String?): AppTheme =
+    APP_THEMES.firstOrNull { it.id == (id ?: DEFAULT_THEME_ID) } ?: APP_THEMES.first { it.id == DEFAULT_THEME_ID }
 
 fun Modifier.themeBackground(t: AppTheme): Modifier = drawBehind {
     drawRect(Brush.verticalGradient(listOf(t.top, t.bottom)))

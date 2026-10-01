@@ -7,7 +7,7 @@ golden hour, sunset and dusk.
 ## Features
 - Up to 8 clocks, 130+ cities (Pakistan, Gulf, Europe, Americas, Asia, Africa, Oceania)
 - Digital time in 12-hour AM/PM format; optional analog clock in List layout (Settings)
-- 7 background themes: Aurora (default), Graphite, Ember, Forest, Rose, Pure Black, Daylight
+- 7 background themes: Daylight (default), Aurora, Graphite, Ember, Forest, Rose, Pure Black
 - Real sky per city computed from its coordinates (sun elevation) – not a guess from the hour
 - Twinkling stars, moon with real phase, glowing sun, layered hills
 - Day phase label: Night, Dawn, Sunrise, Morning, Midday, Afternoon, Golden hour, Sunset, Dusk
