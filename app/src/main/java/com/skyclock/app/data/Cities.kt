@@ -185,6 +185,15 @@ class CityStore(context: Context) {
     var gridLayout: Boolean
         get() = prefs.getBoolean("grid", false)
         set(value) { prefs.edit().putBoolean("grid", value).apply() }
+
+    /** Analog clock on wide (list) cards – off by default. */
+    var showAnalog: Boolean
+        get() = prefs.getBoolean("analog", false)
+        set(value) { prefs.edit().putBoolean("analog", value).apply() }
+
+    var themeId: String?
+        get() = prefs.getString("theme", null)
+        set(value) { prefs.edit().putString("theme", value).apply() }
 }
 
 const val MAX_CLOCKS = 8

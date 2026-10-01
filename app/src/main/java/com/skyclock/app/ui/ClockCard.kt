@@ -24,6 +24,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -89,6 +90,7 @@ fun ClockCard(
     twinkle: State<Float>,
     compact: Boolean,
     isDragging: Boolean,
+    showAnalog: Boolean = false,
     onClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
@@ -111,7 +113,11 @@ fun ClockCard(
                 Brush.horizontalGradient(listOf(Color.Black.copy(alpha = 0.22f), Color.Transparent, Color.Black.copy(alpha = 0.10f))),
             ),
         )
-        if (compact) CompactContent(city, d) else WideContent(city, d)
+        when {
+            compact -> CompactContent(city, d)
+            showAnalog -> WideContent(city, d)
+            else -> WideDigitalContent(city, d)
+        }
 
         // Glass edge (accent while dragging)
         Box(
@@ -173,6 +179,53 @@ private fun WideContent(city: City, d: ClockData) {
     }
 }
 
+/** Wide card without analog clock: big digital time. */
+@Composable
+private fun WideDigitalContent(city: City, d: ClockData) {
+    val z = d.zoned
+    Column(Modifier.fillMaxSize().padding(horizontal = 22.dp, vertical = 16.dp)) {
+        Row(verticalAlignment = Alignment.Top) {
+            Column(Modifier.weight(1f)) {
+                Text(
+                    city.name,
+                    style = TextStyle(fontSize = 22.sp, fontWeight = FontWeight.SemiBold, shadow = TextShadow),
+                    color = Color.White, maxLines = 1, overflow = TextOverflow.Ellipsis,
+                )
+                Text(
+                    city.country,
+                    style = TextStyle(fontSize = 13.sp, shadow = TextShadow),
+                    color = Color.White.copy(alpha = 0.80f), maxLines = 1,
+                )
+            }
+            Spacer(Modifier.width(8.dp))
+            PhaseChip(d.state.phase)
+        }
+        Spacer(Modifier.weight(1f))
+        Row(verticalAlignment = Alignment.Bottom) {
+            Text(
+                z.format(FMT_TIME),
+                style = TextStyle(fontSize = 54.sp, fontWeight = FontWeight.Light, letterSpacing = (-1.5).sp, shadow = TextShadow),
+                color = Color.White,
+            )
+            Spacer(Modifier.width(6.dp))
+            Text(
+                z.format(FMT_AMPM),
+                style = TextStyle(fontSize = 19.sp, fontWeight = FontWeight.Medium, shadow = TextShadow),
+                color = Color.White,
+                modifier = Modifier.padding(bottom = 11.dp),
+            )
+            Spacer(Modifier.weight(1f))
+            Text(
+                "${dayLabel(z, d.local)}\n${offsetLabel(z, d.local)}",
+                style = TextStyle(fontSize = 13.sp, fontWeight = FontWeight.Medium, shadow = TextShadow),
+                color = Color.White.copy(alpha = 0.92f),
+                textAlign = TextAlign.End,
+                modifier = Modifier.padding(bottom = 10.dp),
+            )
+        }
+    }
+}
+
 @Composable
 private fun CompactContent(city: City, d: ClockData) {
     val z = d.zoned
@@ -190,8 +243,6 @@ private fun CompactContent(city: City, d: ClockData) {
                     color = Color.White.copy(alpha = 0.80f), maxLines = 1, overflow = TextOverflow.Ellipsis,
                 )
             }
-            Spacer(Modifier.width(6.dp))
-            AnalogClock(z.hour, z.minute, z.second.toFloat(), Modifier.size(42.dp))
         }
         Spacer(Modifier.weight(1f))
         Row(verticalAlignment = Alignment.Bottom) {
