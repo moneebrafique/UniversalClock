@@ -63,8 +63,8 @@ object SkyPalette {
     private class Key(val e: Float, val top: Long, val mid: Long, val bottom: Long)
 
     private val MORNING = listOf(
-        Key(-90f, 0xFF03050F, 0xFF070B1E, 0xFF0D1330),
-        Key(-18f, 0xFF050818, 0xFF0B1030, 0xFF161C45),
+        Key(-90f, 0xFF0A1238, 0xFF152056, 0xFF263478),
+        Key(-18f, 0xFF0C1540, 0xFF1A2662, 0xFF2E3C86),
         Key(-10f, 0xFF0B1442, 0xFF26306E, 0xFF4A3F7A),
         Key(-4f, 0xFF1B2B6B, 0xFF6A5A9E, 0xFFF29E8E),
         Key(0f, 0xFF2E4C9A, 0xFFB07AA8, 0xFFFFB27A),
@@ -74,8 +74,8 @@ object SkyPalette {
     )
 
     private val EVENING = listOf(
-        Key(-90f, 0xFF03050F, 0xFF070B1E, 0xFF0D1330),
-        Key(-18f, 0xFF050818, 0xFF0D0F30, 0xFF1A1745),
+        Key(-90f, 0xFF0A1238, 0xFF152056, 0xFF263478),
+        Key(-18f, 0xFF0D1340, 0xFF1C2060, 0xFF33307E),
         Key(-10f, 0xFF0E1240, 0xFF35286A, 0xFF5C3466),
         Key(-4f, 0xFF1F2466, 0xFF7A4A8E, 0xFFFF7A6B),
         Key(0f, 0xFF35407F, 0xFFC0607A, 0xFFFF9452),

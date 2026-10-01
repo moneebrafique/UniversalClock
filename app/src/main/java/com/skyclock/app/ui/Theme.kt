@@ -6,7 +6,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
 val Accent = Color(0xFFFFB74D)
-val SheetColor = Color(0xFF11152C)
+val SheetColor = Color(0xFF16161D)
+val AppBgTop = Color(0xFF09090D)
+val AppBgMid = Color(0xFF101015)
+val AppBgBottom = Color(0xFF17171E)
 
 @Composable
 fun SkyClockTheme(content: @Composable () -> Unit) {
@@ -17,7 +20,7 @@ fun SkyClockTheme(content: @Composable () -> Unit) {
             secondary = Color(0xFF9FA8FF),
             surface = SheetColor,
             surfaceContainerLow = SheetColor,
-            background = Color(0xFF070A18),
+            background = Color(0xFF09090D),
         ),
         content = content,
     )

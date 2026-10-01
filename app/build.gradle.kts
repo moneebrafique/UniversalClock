@@ -57,4 +57,6 @@ dependencies {
     implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.activity:activity-compose:1.9.3")
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.8.7")
+    // Drag & drop reordering for lists and grids
+    implementation("sh.calvin.reorderable:reorderable:2.4.3")
 }

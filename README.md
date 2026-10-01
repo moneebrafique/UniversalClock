@@ -14,7 +14,8 @@ golden hour, sunset and dusk.
 - Tap a clock: big sky view, smooth second hand, sun path arc, sunrise, sunset, day length,
   solar noon, time zone, daylight saving, "Sunset in 2h 10m"
 - Time travel slider: move all clocks ±12 hours to plan calls and meetings
-- Long-press a clock to move it up/down or remove it
+- Two layouts: wide list, or 2×4 grid that fits all 8 clocks on one screen
+- Hold and drag any clock to reorder (works in both layouts)
 
 ## Works offline
 Time comes from the phone's own clock and Android's built-in time-zone database (including

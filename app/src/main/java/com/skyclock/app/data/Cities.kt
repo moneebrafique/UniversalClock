@@ -181,6 +181,10 @@ class CityStore(context: Context) {
     fun save(list: List<City>) {
         prefs.edit().putString("ids", list.joinToString("\n") { it.id }).apply()
     }
+
+    var gridLayout: Boolean
+        get() = prefs.getBoolean("grid", false)
+        set(value) { prefs.edit().putBoolean("grid", value).apply() }
 }
 
 const val MAX_CLOCKS = 8
